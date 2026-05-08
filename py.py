@@ -1,26 +1,28 @@
+
 import pygame
-import pygame_gui
-
-
 pygame.init()
-
-pygame.display.set_caption('Quick Start')
-window_surface = pygame.display.set_mode((800, 600))
-
-background = pygame.Surface((800, 600))
-background.fill(pygame.Color('#000000'))
-
-manager = pygame_gui.UIManager((800, 600))
-
-is_running = True
-while is_running:
-
+x,y = 320,240
+WIDTH, HEIGHT = 600,400
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+speed = 3
+running = True
+while running:
+    pygame.time.delay(100)
     for event in pygame.event.get():
-         if event.type == pygame.QUIT:
-             is_running = False
-
-    window_surface.blit(background, (0, 0))
-
+        if event.type == pygame.QUIT:
+            running = False
+    
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT]:
+        x -= speed
+    if keys[pygame.K_RIGHT]:
+        x += speed
+    if keys[pygame.K_UP]:
+        y -= speed
+    if keys[pygame.K_DOWN]:
+        y += speed
+    screen.fill((0,0,0))
+    pygame.draw.rect(screen, (255,0,0), (x,y,50,50))
     pygame.display.update()
 
 pygame.quit()
