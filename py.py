@@ -4,10 +4,9 @@ pygame.init()
 x,y = 320,240
 WIDTH, HEIGHT = 600,400
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-speed = 3
+speed = 5
 running = True
 while running:
-    pygame.time.delay(100)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -21,8 +20,11 @@ while running:
         y -= speed
     if keys[pygame.K_DOWN]:
         y += speed
+    
     screen.fill((0,0,0))
     pygame.draw.rect(screen, (255,0,0), (x,y,50,50))
     pygame.display.update()
+
+
 
 pygame.quit()
